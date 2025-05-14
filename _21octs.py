@@ -61,8 +61,8 @@ def võta_kaart():
         img_tk = ImageTk.PhotoImage(img)
         kaart_lbl = tk.Label(aken, image=img_tk)
         kaart_lbl.image = img_tk
-        x_pos = 20 + len(mängija_kaart_imgid) * 110
-        kaart_lbl.place(x=x_pos, y=500)
+        x_pos = 70 + len(mängija_kaart_imgid) * 110
+        kaart_lbl.place(x=x_pos, y=400)
         mängija_kaart_imgid.append(kaart_lbl)
     except Exception as e:
         print(f"Ошибка при отображении карты: {e}")
@@ -83,7 +83,7 @@ def peatu():
 def lõppseis(tulemus):
     lõppseis_label.config(text=f"Tulemus: {tulemus}")
     alustamisnupp.config(text="Mängi uuesti", command=alusta_mängu)  
-    alustamisnupp.place(x=875, y=470)
+    alustamisnupp.place(x=750, y=470)
     võta_kaart_nupp.config(state=tk.DISABLED)
     peatu_nupp.config(state=tk.DISABLED)
     salvesta_tulemus(mängija_nimi, tulemus, mängija_summa)
@@ -94,33 +94,33 @@ def salvesta_tulemus(nimi, tulemus, summa):
 
 aken = tk.Tk()
 aken.title("Mäng 21")
-aken.geometry("1050x750")
+aken.geometry("920x700")
 
 mängija_kaart_img_label = tk.Label(aken)
 mängija_kaart_img_label.place(x=700, y=250)
 
 mängija_nimi_label = tk.Label(aken, text="Sisesta Mängija nimi:")
-mängija_nimi_label.place(x=875, y=200)
+mängija_nimi_label.place(x=750, y=200)
 mängija_nimi_entry = tk.Entry(aken)
-mängija_nimi_entry.place(x=875, y=220)
+mängija_nimi_entry.place(x=750, y=220)
 
 alustamisnupp = tk.Button(aken, text="Alusta mängu", command=alusta_mängu)
-alustamisnupp.place(x=875, y=150)
+alustamisnupp.place(x=750, y=150)
 
 mängija_kaardid_label = tk.Label(aken, text="Mängija kaardid: []")
-mängija_kaardid_label.place(x=875, y=250)
+mängija_kaardid_label.place(x=750, y=250)
 mängija_summa_label = tk.Label(aken, text="Summa: 0")
-mängija_summa_label.place(x=875, y=350)
+mängija_summa_label.place(x=750, y=350)
 vastane_kaardid_label = tk.Label(aken, text="Vastase kaardid: ?")
-vastane_kaardid_label.place(x=875, y=370)
+vastane_kaardid_label.place(x=750, y=370)
 vastane_summa_label = tk.Label(aken, text="Summa: ?")
-vastane_summa_label.place(x=875, y=390)
+vastane_summa_label.place(x=750, y=390)
 
-võta_kaart_nupp = tk.Button(aken, text="Võta kaart", command=võta_kaart, state=tk.DISABLED)
-võta_kaart_nupp.place(x=875, y=285)
+võta_kaart_nupp = tk.Button(aken, text="Võta kaart", command=võta_kaart, state=tk.DISABLED, font=('Viner Hand ITC', 10))
+võta_kaart_nupp.place(x=750, y=285)
 
 peatu_nupp = tk.Button(aken, text="Peatu", command=peatu, state=tk.DISABLED)
-peatu_nupp.place(x=875, y=320)
+peatu_nupp.place(x=750, y=320)
 lõppseis_label = tk.Label(aken, text="Tulemus:")
-lõppseis_label.place(x=875, y=420)
+lõppseis_label.place(x=750, y=420)
 aken.mainloop()

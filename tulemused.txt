@@ -28,3 +28,11 @@ sdfdsf, Võitsid! Vastane ületas 21!, 19
 jjjj, Kaotasid! Ületasid 21!, 23
 jjjj, Kaotasid! Ületasid 21!, 24
 jjjj, Kaotasid!, 8
+hjk, Võitsid! Vastane ületas 21!, 0
+hjk, Kaotasid! Ületasid 21!, 29
+ffgh, Kaotasid! Ületasid 21!, 22
+dfgdfg, Kaotasid! Ületasid 21!, 24
+fghfgh, Kaotasid! Ületasid 21!, 24
+sdfsdf, Kaotasid! Ületasid 21!, 22
+cghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh+, Kaotasid!, 5
+cghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh+, Kaotasid! Ületasid 21!, 24
