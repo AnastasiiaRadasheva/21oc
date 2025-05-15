@@ -24,6 +24,20 @@
     <Compile Include="_21octs.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="b10.png" />
+    <Content Include="b11.png" />
+    <Content Include="b12.png" />
+    <Content Include="b2.png" />
+    <Content Include="b3.png" />
+    <Content Include="b4.png" />
+    <Content Include="b5.png" />
+    <Content Include="b6.png" />
+    <Content Include="b7.png" />
+    <Content Include="b8.png" />
+    <Content Include="b9.png" />
+    <Content Include="new.jpg" />
+    <Content Include="new1.jpg" />
+    <Content Include="new3.jpg" />
     <Content Include="r2.png" />
     <Content Include="r3.png" />
     <Content Include="r10.png" />
@@ -33,6 +47,8 @@
     <Content Include="r7.png" />
     <Content Include="r8.png" />
     <Content Include="r9.png" />
+    <Content Include="tekstura.png" />
+    <Content Include="texstur.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

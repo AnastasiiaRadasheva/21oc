@@ -3,9 +3,10 @@ import random
 from PIL import Image, ImageTk
 
 mängija_kaart_imgid = []
-
 def loe_kaart():
-    return random.randint(2, 11)
+    mast = random.choice(['r', 'b'])
+    number = random.randint(2, 11)
+    return (mast, number)
 
 def arvuta_tulemus(mängija_summa, vastane_summa):
     if mängija_summa > 21:
@@ -49,14 +50,15 @@ def alusta_mängu():
 
 def võta_kaart():
     global mängija_summa, mängija_kaardid, mängija_kaart_imgid
-    kaart = loe_kaart()
+    kaart = loe_kaart()  # now kaart is (mast, number)
     mängija_kaardid.append(kaart)
-    mängija_summa += kaart
+    # прибавляем к сумме значение карты
+    mängija_summa += kaart[1]
     mängija_kaardid_label.config(text=f"Mängija kaardid: {mängija_kaardid}")
     mängija_summa_label.config(text=f"Summa: {mängija_summa}")
 
     try:
-        img = Image.open(f"r{kaart}.png")
+        img = Image.open(f"{kaart[0]}{kaart[1]}.png")  # 'r5.png' или 'b10.png'
         img = img.resize((100, 140))
         img_tk = ImageTk.PhotoImage(img)
         kaart_lbl = tk.Label(aken, image=img_tk)
@@ -75,10 +77,11 @@ def peatu():
     while vastane_summa < 17:
         kaart = loe_kaart()
         vastase_kaardid.append(kaart)
-        vastane_summa += kaart
+        vastane_summa += kaart[1]
     vastane_kaardid_label.config(text=f"Vastase kaardid: {vastase_kaardid}")
     vastane_summa_label.config(text=f"Summa: {vastane_summa}")
     lõppseis(arvuta_tulemus(mängija_summa, vastane_summa))
+
 
 def lõppseis(tulemus):
     lõppseis_label.config(text=f"Tulemus: {tulemus}")
@@ -89,38 +92,63 @@ def lõppseis(tulemus):
     salvesta_tulemus(mängija_nimi, tulemus, mängija_summa)
 
 def salvesta_tulemus(nimi, tulemus, summa):
+    with open("tulemused.txt", "a", encoding="utf-8") as f:
+        f.write(f"{nimi}, {tulemus}, {summa}\n")
+        
+salvesta_tulemus(mängija_nimi, tulemus, mängija_summa)
+
+def salvesta_tulemus(nimi, tulemus, summa):
     with open("tulemused.txt", "a") as f:
         f.write(f"{nimi}, {tulemus}, {summa}\n")
 
+def vaata_tulemusi():
+    try:
+        with open("tulemused.txt", "r") as f:
+            andmed = f.readlines()
+        tulemuste_aken = tk.Toplevel(aken)
+        tulemuste_aken.title("Mängu tulemused")
+        tulemuste_aken.geometry("400x400")
+        tulemused_txt = tk.Text(tulemuste_aken, wrap=tk.WORD)
+        tulemused_txt.pack(expand=True, fill=tk.BOTH)
+        for rida in andmed:
+            tulemused_txt.insert(tk.END, rida)
+    except FileNotFoundError:
+        lõppseis_label.config(text="Tulemuste faili ei leitud.")
+
 aken = tk.Tk()
 aken.title("Mäng 21")
-aken.geometry("920x700")
+aken.geometry("1080x700")
+taust_img = Image.open("new3.jpg")  
+taust_img = taust_img.resize((1200, 700))
+taust_img_tk = ImageTk.PhotoImage(taust_img)
+taust_label = tk.Label(aken, image=taust_img_tk)
+taust_label.place(x=0, y=0, relwidth=1, relheight=1)
+taust_label.image = taust_img_tk
 
-mängija_kaart_img_label = tk.Label(aken)
-mängija_kaart_img_label.place(x=700, y=250)
 
-mängija_nimi_label = tk.Label(aken, text="Sisesta Mängija nimi:")
+
+mängija_nimi_label = tk.Label(aken, text="Sisesta Mängija nimi:", font=('Times New Roman', 10),bg='darkred', fg="white")
 mängija_nimi_label.place(x=750, y=200)
 mängija_nimi_entry = tk.Entry(aken)
 mängija_nimi_entry.place(x=750, y=220)
 
-alustamisnupp = tk.Button(aken, text="Alusta mängu", command=alusta_mängu)
+alustamisnupp = tk.Button(aken, text="Alusta mängu", command=alusta_mängu, font=('Times New Roman', 10),bg='darkred', fg="white")
 alustamisnupp.place(x=750, y=150)
 
-mängija_kaardid_label = tk.Label(aken, text="Mängija kaardid: []")
+mängija_kaardid_label = tk.Label(aken, text="Mängija kaardid: []", font=('Times New Roman', 10),bg='darkred', fg="white")
 mängija_kaardid_label.place(x=750, y=250)
-mängija_summa_label = tk.Label(aken, text="Summa: 0")
+mängija_summa_label = tk.Label(aken, text="Summa: 0", font=('Times New Roman', 10),bg='darkred', fg="white")
 mängija_summa_label.place(x=750, y=350)
-vastane_kaardid_label = tk.Label(aken, text="Vastase kaardid: ?")
+vastane_kaardid_label = tk.Label(aken, text="Vastase kaardid: ?", font=('Times New Roman', 10),bg='darkred', fg="white")
 vastane_kaardid_label.place(x=750, y=370)
-vastane_summa_label = tk.Label(aken, text="Summa: ?")
+vastane_summa_label = tk.Label(aken, text="Summa: ?", font=('Times New Roman', 10),bg='darkred', fg="white")
 vastane_summa_label.place(x=750, y=390)
 
-võta_kaart_nupp = tk.Button(aken, text="Võta kaart", command=võta_kaart, state=tk.DISABLED, font=('Viner Hand ITC', 10))
+võta_kaart_nupp = tk.Button(aken, text="Võta kaart", command=võta_kaart, state=tk.DISABLED, font=('Times New Roman', 10),bg='darkred', fg="white")
 võta_kaart_nupp.place(x=750, y=285)
 
-peatu_nupp = tk.Button(aken, text="Peatu", command=peatu, state=tk.DISABLED)
+peatu_nupp = tk.Button(aken, text="Peatu", command=peatu, state=tk.DISABLED, font=('Times New Roman', 10),bg='darkred', fg="white")
 peatu_nupp.place(x=750, y=320)
-lõppseis_label = tk.Label(aken, text="Tulemus:")
+lõppseis_label = tk.Label(aken, text="Tulemus:", font=('Times New Roman', 10), bg='darkred', fg="white" )
 lõppseis_label.place(x=750, y=420)
-aken.mainloop()
+aken.mainloop() 
