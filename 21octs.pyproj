@@ -49,6 +49,7 @@
     <Content Include="r9.png" />
     <Content Include="tekstura.png" />
     <Content Include="texstur.jpg" />
+    <Content Include="tulemusedd.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

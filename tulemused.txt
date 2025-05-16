@@ -57,3 +57,15 @@ huhjkb, Võitsid!, 19
 мпрпр, Kaotasid! Ületasid 21!, 23
 вап, Kaotasid! Ületasid 21!, 27
 fgh, Kaotasid! Ületasid 21!, 25
+fgdfg, Kaotasid! Ületasid 21!, 27
+fgdfg, Kaotasid! Ületasid 21!, 27
+sdfsdf, Kaotasid!, 14
+dsfgdfg, Võitsid!, 19
+dfgdsfg, Kaotasid! Ületasid 21!, 97
+ssrt, Kaotasid!, 17
+ssrt, Kaotasid!, 14
+ssrt, Kaotasid! Ületasid 21!, 24
+sdfsdf, Võitsid! Vastane ületas 21!, 14
+frtgh, Võitsid!, 19
+dfgdfg, Võitsid! Vastane ületas 21!, 10
+dfgdfg, Kaotasid!, 14
